@@ -1,14 +1,15 @@
 {
   "name": "mutag",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a simple library to get metadata of mp3 files",
-  "main": "dist/mutag.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "compile": "babel -d lib/ src/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "chunqiuyiyu",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
@@ -17,5 +18,13 @@
     "eslint": "^4.1.1",
     "eslint-loader": "^1.8.0",
     "webpack": "^3.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chunqiuyiyu/mutag.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chunqiuyiyu/mutag/issues"
+  },
+  "homepage": "https://github.com/chunqiuyiyu/mutag#readme"
 }

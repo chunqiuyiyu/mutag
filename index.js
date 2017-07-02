@@ -1,3 +1,3 @@
-const mutag = require('mutag');
+const mutag = require('./lib/index');
 
-console.log(mutag);
+// console.log(mutag.fetch('./demo/'));

@@ -6,7 +6,7 @@ const config = {
 　　entry: './src/index.js',
 　　output: {
   　　 path: path.resolve(__dirname, './dist/'),
-　 　　filename: "mutag.js",
+　 　　filename: "mutag.min.js",
 　　},
 　　module: {
    　　loaders: [{
@@ -16,7 +16,7 @@ const config = {
   　　 }],
 　　},
     plugins: [
-      // new uglifyJsPlugin()
+      new uglifyJsPlugin()
     ]
 };
 
