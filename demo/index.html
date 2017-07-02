@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>mutag</title>
+    <style>
+        img {
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input type="file">
+    <img src="" alt="APIC" id='apic'>
+    <script src="../dist/mutag.js"></script>
+    <script>
+        const mutag = window.mutag;
+        document.getElementsByTagName('input')[0].onchange = function(e){
+            const file = e.target.files[0];
+            mutag.fetch(file).then(tags => {
+                console.log(tags);
+                if(tags.APIC) {
+                    document.getElementsByTagName('img')[0].src = URL.createObjectURL(tags.APIC);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
