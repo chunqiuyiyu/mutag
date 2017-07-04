@@ -8,7 +8,7 @@ npm install mutag
 
 ## 用法
 在浏览器中，首先引入 `dis/mutag.min.js`，然后使用 `window.mutag` 即可。
-```
+```html
 <script src="../dist/mutag.min.js"></script>
 <script>
     const mutag = window.mutag;
@@ -24,7 +24,7 @@ npm install mutag
 ```
 
 在 nodejs 中，用 `require` 方法引入。
-```
+```javascript
 const fs = require('fs');
 const mutag = require('mutag');
 
@@ -50,8 +50,9 @@ Demo
 
 ## 标签说明
 mutag 解析的 ID3 版本是 v2.3，一些常见的标签如下：
+
 |标签|描述|说明|
-|:-:|:-:|:-:|
+|:----:|:----:|:----:|
 |APIC|Attached picture|专辑图片，大多为 jpg 格式，少数为 png 格式|
 |COMM|Comments|注释，音乐文件的发行说明|
 |GEOB|General encapsulated object|通用封装对象|
@@ -64,6 +65,7 @@ mutag 解析的 ID3 版本是 v2.3，一些常见的标签如下：
 |TPUB|Publisher|发布者|
 |TRCK|Track number/Position in set|音轨数|
 |TYER|Year|年份|
+
 想了解更多标签信息，请看[这里](http://id3.org/id3v2.3.0)。
 
 ## 前端兼容性
