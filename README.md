@@ -66,7 +66,7 @@ mutag 解析的 ID3 版本是 v2.3，一些常见的标签如下：
 |TRCK|Track number/Position in set|音轨数|
 |TYER|Year|年份|
 
-想了解更多标签信息，请看[这里](http://id3.org/id3v2.3.0)。
+想了解更多标签信息，请看[这里](/src/common/TCON.txt)。
 
 ## 前端兼容性
 使用了 `TextDecoder`、`new Blob`、`FileReader` 等较新的 API，故只支持新版本的 Chrome 与 Firefox 浏览器。
