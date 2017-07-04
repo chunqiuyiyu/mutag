@@ -10,6 +10,14 @@
   },
   "author": "chunqiuyiyu <cqyyhws@gmail.com> (http://www.chunqiuyiyu.com/)",
   "license": "MIT",
+  "keywords": [
+    "id3",
+    "music",
+    "tags",
+    "es6",
+    "npm-package",
+    "parser"
+  ],
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
