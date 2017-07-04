@@ -3,29 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>mutag</title>
+    <title>mutag - how to use mutag in browser</title>
     <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 40rem;
+            margin: 0 auto;
+        }
+
+        .drop-area {
+            height: 6rem;
+            border: 2px solid #888888;
+            width: 60%;
+            text-align: center;
+            line-height: 6rem;
+            color: gray;
+        }
         img {
             display: block;
             margin-top: 20px;
         }
+
+        .tip {
+            color: gray;
+        }
+
+        .tag {
+            word-break: break-all;
+        }
+
+        .apic {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <input type="file">
-    <img src="" alt="APIC" id='apic'>
+    <div class="container">
+        <h1>Mutag</h1>
+        <h3>a simple library to get metadata of mp3 files.</h2>
+        <div class="drop-area">Drag a mp3 file in here!</div>
+        <div>
+            <h3>tags</h3>
+            <p class="tip">Drag a mp3 file to show tags.</p>
+            <p class="apic">
+                <span>APIC</span>
+                <img class="apic-img">
+            </p>
+            <div class="tags">
+                <h4>Some common tags:</h4>
+                <p>APIC --- Attached picture</p>
+                <p>COMM --- Comments</p>
+                <p>GEOB --- General encapsulated object</p>
+                <p>PRIV --- Private frame</p>
+                <p>TALB --- Album/Movie/Show title</p>
+                <p>TCOM --- Composer</p>
+                <p>TCON --- Content type</p>
+                <p>TIT1 --- Content group description</p>
+                <p>TIT2 --- Title/songname/content description</p>
+                <p>TPE1 --- Lead performer(s)/Soloist(s)</p>
+                <p>TPE2 --- Band/orchestra/accompaniment</p>
+                <p>TPUB --- Publisher</p>
+                <p>TRCK --- Track number/Position in set</p>
+                <p>TYER --- Year</p>
+                <p class="tip">More tags in <a href="http://id3.org/id3v2.3.0">here</a></p>
+            </div>
+        </div>
+    </div>
     <script src="../dist/mutag.min.js"></script>
     <script>
         const mutag = window.mutag;
-        document.getElementsByTagName('input')[0].onchange = function(e){
-            const file = e.target.files[0];
+        const dropDOM = document.querySelector('.drop-area');
+        dropDOM.addEventListener('drop', e => {
+            const file = e.dataTransfer.files[0];
+            let htmlStr = '';
+            dropDOM.innerText = file.name;
             mutag.fetch(file).then(tags => {
-                console.log(tags);
                 if(tags.APIC) {
-                    document.getElementsByTagName('img')[0].src = URL.createObjectURL(tags.APIC);
+                    document.querySelector('.apic-img').src = URL.createObjectURL(tags.APIC);
+                    document.querySelector('.apic').style.display = 'initial';
                 }
+                for (let tag of Object.keys(tags)) {
+                    // normally, we don't need PRIV key
+                    if(tag !== 'PRIV' && tag !== 'APIC')
+                        htmlStr += `<p>
+                                        <span class='tag'>${tag}</span> --- <span>${tags[tag]}<span>
+                                    </p>`;
+                }
+
+                document.querySelector('.tags').innerHTML = htmlStr;
             });
-        }
+        }, false);
+
+        document.addEventListener('drop', e => e.preventDefault(), false);
+        document.addEventListener('dragover', e => e.preventDefault(), false);
     </script>
 </body>
 </html>
