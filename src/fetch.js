@@ -1,23 +1,18 @@
 /**
  * Read mp3 file as binary data.
  */
-import {parsePRIV} from './parse';
-import {getStr, getTagData} from './utils';
+import {parsePRIV} from '../common/parse';
+import {getStr, filterStr, getImgIndex} from '../common/utils';
 
 export default function fetchFile(file) {
-  let data = file, reader;
-  if (typeof FileReader !== 'undefined') {
-    reader = new FileReader();
-    reader.readAsArrayBuffer(file);
-  }
+  const reader = new FileReader();
+  reader.readAsArrayBuffer(file);
+
+  // eslint-disable-next-line no-unused-vars
   const readerPromise = new Promise((resolve, reject) => {
-    if(typeof reader !== 'undefined') {
-      reader.onload = () => {
-        data = new Uint8Array(reader.result);
-        parseFile(data, resolve);
-      }
-    } else {
-      parseFile(data, resolve);
+    reader.onload = () => {
+      file = new Uint8Array(reader.result);
+      parseFile(file, resolve);
     }
   });
 
@@ -43,7 +38,6 @@ function parseFile (data, resolve) {
     }
     const tags = readFrame(data, size);
     resolve(tags);
-
   } else {
     throw new Error('the format of mp3 file is not correct or there has no id3v2.3 tag!')
   }
@@ -62,20 +56,9 @@ function readFrame(data, size) {
     tmp = data.subarray(seek - frameSize, seek);
 
     if (frameID === 'APIC') {
-      let i = 0;
-      while (i < tmp.length)
-      {
-        if (255 === tmp[i] && 216 === tmp[i + 1])
-        {
-            break;
-        }
-        i++;
-      }
-
-      imageData = tmp.subarray(i, frameSize);
-      if (typeof Blob !== 'undefined') {
-        imageData = new Blob([imageData], {type: 'image/jpeg'});
-      }
+      const info = getImgIndex(tmp);
+      imageData = tmp.subarray(info['i'], frameSize);
+      imageData = new Blob([imageData], {type: `image/${info['format']}`});
       tags[frameID] = imageData;
     } else if (frameID === 'PRIV') {
       parsePRIV(tmp, tags['PRIV']);
@@ -86,4 +69,41 @@ function readFrame(data, size) {
 
   !Object.keys(tags['PRIV']).length && delete tags.PRIV;
   return tags;
+}
+
+function getTagData(data, encode) {
+  let seek = 0;
+  let tmp, tmpStr = '';
+
+  if ((encode === 0 || encode === 87) && data[0] !== 1) {
+    while (seek < data.length) {
+      if (data[seek] < 127) {
+        tmpStr += String.fromCharCode(data[seek]);
+        seek++;
+      } else {
+        tmp = data.slice(seek, seek + 2);
+        if (tmp.length == 1) {
+          tmpStr += new TextDecoder('iso-8859-1').decode(tmp.buffer);
+          seek++;
+        } else {
+          tmp = new Uint16Array(tmp.buffer);
+          tmpStr += new TextDecoder('gbk').decode(tmp.buffer);
+          seek += 2;
+        }
+      }
+    }
+  }
+
+  if (encode === 1 || (data[0] === 1 && encode === 0)) {
+    // the utf-16 string begin with FF FE -> 255 254
+    if (data.lastIndexOf(254) !== -1) {
+      data = data.slice(data.lastIndexOf(254) + 1);
+      data = new Uint16Array(data.buffer);
+    }
+
+    tmpStr = getStr(0, data.length, data);
+  }
+
+  tmpStr = filterStr(tmpStr);
+  return tmpStr;
 }
