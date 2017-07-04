@@ -52,7 +52,7 @@ Demo
 mutag 解析的 ID3 版本是 v2.3，一些常见的标签如下：
 
 |标签|描述|说明|
-|:----:|:----:|:----:|
+|:----:|:----|:----|
 |APIC|Attached picture|专辑图片，大多为 jpg 格式，少数为 png 格式|
 |COMM|Comments|注释，音乐文件的发行说明|
 |GEOB|General encapsulated object|通用封装对象|
