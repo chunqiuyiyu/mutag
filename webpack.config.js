@@ -3,7 +3,7 @@ const path = require('path');
 const uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 const config = {
-　　entry: './src/index.js',
+　　entry: './src/browser/index.js',
 　　output: {
   　　 path: path.resolve(__dirname, './dist/'),
 　 　　filename: "mutag.min.js",

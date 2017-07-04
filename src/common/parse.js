@@ -44,12 +44,10 @@ export function parsePRIV (data, obj){
 
     case 44:
       // WM/Provider
-      console.log(data.slice(11));
       obj['WM/Provider'] = getStr(data.slice(11));
       break;
 
     default:
-      obj[data.length] = getStr(data);
       break;
   }
 
