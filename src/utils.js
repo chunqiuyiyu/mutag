@@ -74,12 +74,13 @@ export function getImgIndex(data) {
   };
 }
 
-function filterStr(str) {
+export function filterStr(str) {
   // delete the meaningless char
-  const tmp = ['\u0000', String.fromCharCode(255), '\f'];
-  for (let char of tmp) {
-    str = str.replace(char, '');
+  const tmp = [String.fromCharCode(0), String.fromCharCode(255), '\f'];
+  let tmpStr = '';
+  for (let val of str) {
+    tmpStr += (tmp.indexOf(val) !== -1) ? '' : val;
   }
 
-  return str;
+  return tmpStr;
 }
