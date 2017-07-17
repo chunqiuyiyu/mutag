@@ -7,7 +7,7 @@ npm install mutag
 ```
 
 ## 用法
-在浏览器中，首先引入 `dis/mutag.min.js`，然后使用 `window.mutag` 即可。
+在浏览器中，首先引入 `dist/mutag.min.js`，然后使用 `window.mutag` 即可。
 ```html
 <script src="../dist/mutag.min.js"></script>
 <script>
