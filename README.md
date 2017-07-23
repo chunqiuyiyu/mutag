@@ -7,7 +7,7 @@ npm install mutag
 ```
 
 ## 用法
-在浏览器中，首先引入 `dis/mutag.min.js`，然后使用 `window.mutag` 即可。
+在浏览器中，首先引入 `dist/mutag.min.js`，然后使用 `window.mutag` 即可。
 ```html
 <script src="../dist/mutag.min.js"></script>
 <script>
@@ -69,7 +69,7 @@ mutag 解析的 ID3 版本是 v2.3，一些常见的标签如下：
 想了解更多标签信息，请看[这里](https://github.com/chunqiuyiyu/mutag/blob/master/src/common/tags.txt)。
 
 ## 前端兼容性
-使用了 `TextDecoder`、`new Blob`、`FileReader` 等较新的 API，故只支持新版本的 Chrome 与 Firefox 浏览器。
+使用了 `TextDecoder`、`Blob`、`FileReader` 等较新的 API，故只支持新版本的 Chrome 与 Firefox 浏览器。
 
 ## 开源协议
 MIT

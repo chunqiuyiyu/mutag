@@ -20,9 +20,16 @@
             border: 2px solid #888888;
             width: 60%;
             text-align: center;
-            line-height: 6rem;
             color: gray;
+            display: table;
         }
+
+        .drop-area div {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 0 23%;
+        }
+        
         .apic-img {
             display: block;
             margin-top: 20px;
@@ -32,7 +39,7 @@
             color: gray;
         }
 
-        .tag {
+        .tags {
             word-break: break-all;
         }
 
@@ -45,7 +52,11 @@
     <div class="container">
         <h1>Mutag</h1>
         <h3>a simple library to get metadata of mp3 files.</h2>
-        <div class="drop-area">Drag a mp3 file in here!</div>
+        <div class="drop-area">
+            <div>
+                Drag a mp3 file in here!
+            </div>
+        </div>
         <div>
             <h3>tags</h3>
             <p class="tip">Drag a mp3 file to show tags.</p>
@@ -69,7 +80,7 @@
                 <p>TPUB --- Publisher</p>
                 <p>TRCK --- Track number/Position in set</p>
                 <p>TYER --- Year</p>
-                <p class="tip">More tags in <a href="http://id3.org/id3v2.3.0">here</a></p>
+                <p class="tip">More tags in <a href="https://github.com/chunqiuyiyu/mutag/blob/master/src/common/tags.txt">here</a></p>
             </div>
         </div>
     </div>
@@ -80,7 +91,7 @@
         dropDOM.addEventListener('drop', e => {
             const file = e.dataTransfer.files[0];
             let htmlStr = '';
-            dropDOM.innerText = file.name;
+            dropDOM.innerHTML = `<div>${file.name}</div>`;
             mutag.fetch(file).then(tags => {
                 if(tags.APIC) {
                     document.querySelector('.apic-img').src = URL.createObjectURL(tags.APIC);
