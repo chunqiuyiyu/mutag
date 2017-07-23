@@ -1,12 +1,11 @@
 {
   "name": "mutag",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "a simple library to get metadata of mp3 files",
   "main": "lib/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "compile": "babel -d lib/ src/node src/common",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "babel -d lib/ src/node src/common"
   },
   "author": "chunqiuyiyu <cqyyhws@gmail.com> (http://www.chunqiuyiyu.com/)",
   "license": "MIT",
