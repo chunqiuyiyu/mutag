@@ -1,7 +1,7 @@
 # Mutag
 A simple MP3 file tag parser. You can use it to get album photo, album name, date, style and other information in MP3 music files.
 
-[Chinese Document](README.cn.md)
+[Chinese Document](./doc/README.cn.md)
 
 ## Installation
 ```
