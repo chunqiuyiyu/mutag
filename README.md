@@ -1,7 +1,10 @@
 # Mutag
 A simple MP3 file tag parser. You can use it to get album photo, album name, date, style and other information in MP3 music files.
 
-[Chinese Document](./doc/README.cn.md)
+[中文文档](./doc/README.cn.md)
+
+## Preview
+[Demo](http://www.chunqiuyiyu.com/mutag/)
 
 ## Installation
 ```
@@ -45,9 +48,6 @@ Return value is a Promise object. if there is no error, you can get all existing
 
 ### mutag.version
 Return the version number of Mutag.
-
-## Preview
-[Demo](http://www.chunqiuyiyu.com/mutag/)
 
 ## Tag description
 Mutag can parse ID3v2.3. Some common tags are as follows:

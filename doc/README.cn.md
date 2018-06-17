@@ -1,7 +1,10 @@
 # Mutag
 一个简单的 MP3 文件标签解析器。你可以用它来获取 MP3 音乐文件中的专辑图片、专辑名称、年代，风格等信息。
 
-[英文文档](../README.md)
+[English Document](../README.md)
+
+## 示例
+[Demo](http://www.chunqiuyiyu.com/mutag/)
 
 ## 安装
 ```
@@ -46,9 +49,6 @@ fs.readFile('path/to/file.mp3', (err, data) => {
 
 ### mutag.version
 返回 Mutag 的版本号。
-
-## 示例
-[Demo](http://www.chunqiuyiyu.com/mutag/)
 
 ## 标签说明
 Mutag 解析的 ID3 版本是 v2.3，一些常见的标签如下：
