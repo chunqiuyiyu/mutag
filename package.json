@@ -1,6 +1,6 @@
 {
   "name": "mutag",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "a simple library to get metadata of mp3 files",
   "main": "lib/index.js",
   "scripts": {
