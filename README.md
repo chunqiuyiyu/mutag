@@ -1,5 +1,9 @@
 # Mutag
-A simple MP3 file tag parser. You can use it to get album photo, album name, date, style and other information in MP3 music files.
+> A simple MP3 file tag parser.
+You can use it to get album photo, album name, date, style and other information in MP3 music files.
+[![npm](https://img.shields.io/npm/dt/mutag.svg?style=flat-square)](https://www.npmjs.com/package/mutag)
+[![GitHub package version](https://img.shields.io/github/package-json/v/chunqiuyiyu/mutag.svg?style=flat-square)](https://github.com/chunqiuyiyu/mutag)
+[![license](https://img.shields.io/github/license/chunqiuyiyu/mutag.svg?style=flat-square)](https://github.com/chunqiuyiyu/mutag/blob/master/LICENSE)
 
 [中文文档](./doc/README.cn.md)
 
