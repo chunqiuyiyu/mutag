@@ -1,5 +1,11 @@
 # Mutag
-一个简单的 MP3 文件标签解析器。你可以用它来获取 MP3 音乐文件中的专辑图片、专辑名称、年代，风格等信息。
+> 一个简单的 MP3 文件标签解析器。
+
+[![npm](https://img.shields.io/npm/dt/mutag.svg?style=flat-square)](https://www.npmjs.com/package/mutag)
+[![GitHub package version](https://img.shields.io/github/package-json/v/chunqiuyiyu/mutag.svg?style=flat-square)](https://github.com/chunqiuyiyu/mutag)
+[![license](https://img.shields.io/github/license/chunqiuyiyu/mutag.svg?style=flat-square)](https://github.com/chunqiuyiyu/mutag/blob/master/LICENSE)
+
+你可以用它来获取 MP3 音乐文件中的专辑图片、专辑名称、年代，风格等信息。
 
 [English Document](../README.md)
 
